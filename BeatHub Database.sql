@@ -67,3 +67,13 @@ CREATE TABLE Playlist_Songs (
     FOREIGN KEY (playlist_id) REFERENCES Playlists(id) ON DELETE CASCADE,
     FOREIGN KEY (song_id) REFERENCES Songs(id) ON DELETE CASCADE
 );
+CREATE TABLE Song_Files (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    song_id INT NOT NULL, -- Links to the Songs table
+    mp3_file LONGBLOB NOT NULL, -- Stores the MP3 file
+    file_size BIGINT, -- Optional: size of the file in bytes
+    file_format VARCHAR(10), -- Optional: format (e.g., MP3, WAV)
+    FOREIGN KEY (song_id) REFERENCES Songs(id) ON DELETE CASCADE
+);
+
+
